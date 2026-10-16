@@ -1,0 +1,23 @@
+{
+  "name": "rick-and-morty-desktop",
+  "productName": "Rick & Morty Desktop Explorer",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio desarrollada con Electron para consultar información de personajes de Rick and Morty API (Parcial 2).",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "rick-and-morty",
+    "desktop-app",
+    "api",
+    "multiplataforma"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^44.7.2"
+  }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://rickandmortyapi.com; img-src 'self' data: https://rickandmortyapi.com;">
+    <title>Rick & Morty Desktop Explorer - Parcial 2</title>
+    <!-- Estilos de escritorio modernos y optimizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header nativo de la aplicación de escritorio -->
+    <header class="app-header">
+        <div class="header-top">
+            <div class="brand">
+                <img src="assets/icon.png" alt="Rick and Morty Icon" class="brand-icon" id="app-logo">
+                <div class="brand-title">
+                    Rick & Morty <span class="tag">Desktop Edition</span>
+                </div>
+            </div>
+            <div class="stats-badge" id="stats-badge">
+                <span>Total personajes:</span> <strong id="total-characters">0</strong>
+            </div>
+        </div>
+
+        <!-- Barra de Controles: Búsqueda y Filtros de Navegación -->
+        <div class="controls-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="input-search" placeholder="Buscar personaje por nombre..." autocomplete="off">
+            </div>
+
+            <select id="filter-status" class="filter-select" title="Filtrar por estado">
+                <option value="">Estado: Todos</option>
+                <option value="alive">Vivo (Alive)</option>
+                <option value="dead">Muerto (Dead)</option>
+                <option value="unknown">Desconocido (Unknown)</option>
+            </select>
+
+            <select id="filter-gender" class="filter-select" title="Filtrar por género">
+                <option value="">Género: Todos</option>
+                <option value="female">Femenino (Female)</option>
+                <option value="male">Masculino (Male)</option>
+                <option value="genderless">Sin género (Genderless)</option>
+                <option value="unknown">Desconocido (Unknown)</option>
+            </select>
+
+            <button type="button" id="btn-reset" class="btn-secondary-action" title="Restablecer filtros">
+                ↺ Limpiar
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main-container">
+        <!-- Indicador de Carga (mantiene el id="loading" de la práctica original) -->
+        <section id="loading" class="d-none">
+            <div class="spinner" role="status" aria-hidden="true"></div>
+            <strong>Consultando API de Rick and Morty...</strong>
+        </section>
+
+        <!-- Mensaje cuando no hay resultados o error de red -->
+        <div id="feedback-message" class="feedback-box d-none">
+            <div class="feedback-icon" id="feedback-icon">🪐</div>
+            <h3 class="feedback-title" id="feedback-title">Sin resultados</h3>
+            <p class="feedback-text" id="feedback-text">No se encontraron personajes con los filtros seleccionados.</p>
+            <button id="btn-retry" class="btn-page d-none" style="margin: 0 auto;">Reintentar conexión</button>
+        </div>
+
+        <!-- Contenedor dinámico (mantiene id="card-dinamica" de la práctica original) -->
+        <div class="characters-grid" id="card-dinamica"></div>
+
+        <!-- Template original enriquecido con los 6 campos requeridos -->
+        <template id="template-card">
+            <article class="character-card">
+                <div class="card-image-wrapper">
+                    <img src="" alt="" class="card-img-top" loading="lazy">
+                    <span class="status-floating-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Alive</span>
+                    </span>
+                </div>
+                <div class="card-body">
+                    <h2 class="character-name">Nombre Personaje</h2>
+                    <div class="character-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Estado:</span>
+                            <span class="detail-value character-status-val">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Especie:</span>
+                            <span class="detail-value character-species-val">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Género:</span>
+                            <span class="detail-value character-gender-val">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Origen:</span>
+                            <span class="detail-value origin-badge character-origin-val">-</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </template>
+    </main>
+
+    <!-- Barra de Paginación y Navegación de Escritorio -->
+    <footer class="pagination-bar">
+        <div class="page-indicator" id="page-summary">
+            Página <strong id="current-page-num">1</strong> de <strong id="total-pages-num">1</strong>
+        </div>
+        <div class="pagination-controls">
+            <button id="btn-prev" class="btn-page" disabled>
+                ◀ Anterior
+            </button>
+            <button id="btn-next" class="btn-page" disabled>
+                Siguiente ▶
+            </button>
+        </div>
+    </footer>
+
+    <!-- Script renderer de la aplicación -->
+    <script src="render.js"></script>
+</body>
+</html>
