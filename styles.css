@@ -140,10 +140,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  background: linear-gradient(90deg, #97ce4c 0%, #00b0c8 50%, #f0e14a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(151, 206, 76, 0.3));
+  color: var(--portal-green);
+  text-shadow: 0 0 12px var(--portal-glow);
 }
 
 .brand-title span.tag {
