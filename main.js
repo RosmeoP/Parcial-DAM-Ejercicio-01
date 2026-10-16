@@ -11,7 +11,7 @@ function createWindow() {
     minHeight: 650,
     title: "Rick & Morty Desktop Explorer",
     icon: path.join(__dirname, 'assets', 'icon.png'),
-    backgroundColor: '#0b0f19',
+    backgroundColor: '#202329',
     show: false, // Evita parpadeo blanco antes de cargar
     webPreferences: {
       nodeIntegration: false,
